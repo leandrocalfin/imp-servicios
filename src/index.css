@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
+@import "leaflet/dist/leaflet.css";
+@import "tailwindcss";
+
+:root {
+  font-family: "Manrope", sans-serif;
+
+  --imp-navy: #07182b;
+  --imp-navy-light: #0d2038;
+  --imp-red: #d7192d;
+  --imp-white: #ffffff;
+  --imp-gray: #d7dce2;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: clip;
+  background: var(--imp-navy);
+  color: var(--imp-white);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+.font-industrial {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+/* ==========================================
+   SCROLL REVEAL
+========================================== */
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ESTADO VISIBLE */
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================
+   LEAFLET - CONTROL DE Z-INDEX
+========================================== */
+
+.leaflet-container {
+  z-index: 0 !important;
+}
+
+.leaflet-pane {
+  z-index: 1 !important;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 2 !important;
+}

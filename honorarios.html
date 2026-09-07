@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Servicios, Costos y Honorarios</title>
+<style>
+  :root {
+    --azul: #1f3a5f;
+    --azul-oscuro: #16283f;
+    --gris: #4a5568;
+    --gris-claro: #eef1f5;
+    --gris-borde: #d7dde4;
+    --acento: #3b82f6;
+    --texto: #222b35;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--texto);
+    background: #f4f6f9;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 24px auto;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  /* ---- Portada ---- */
+  .portada {
+    background: linear-gradient(
+      135deg,
+      #07111C 0%,
+      #14283A 30%,
+      #203C52 50%,
+      #102334 72%,
+      #060D15 100%
+    );
+    color: #fff;
+    padding: 60px 48px;
+    text-align: center;
+  }
+  .portada .logo { margin-bottom: 26px; }
+  .portada .logo img { max-height: 100px; }
+  .portada .logo-placeholder {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 16px; letter-spacing: 2px; color: #fff;
+    border: 1px dashed rgba(255,255,255,0.4); padding: 10px 18px; border-radius: 6px;
+  }
+  .portada h1 { font-size: 32px; font-weight: 700; margin: 18px 0 8px; line-height: 1.2; }
+  .portada p { color: #cfdbea; font-size: 15px; }
+  .portada .tag { letter-spacing: 3px; text-transform: uppercase; font-size: 12px; color: #b8cbe4; }
+  .portada .meta {
+    margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 22px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  .portada .meta div { font-size: 13px; color: #e2e9f4; }
+  .portada .meta strong { display: block; color: #fff; font-size: 14px; }
+
+  /* ---- contenido ---- */
+  .contenido { padding: 40px 48px; }
+
+  section { margin-bottom: 30px; }
+  section h2 {
+    font-size: 20px; color: var(--azul); font-weight: 700;
+    border-bottom: 2px solid var(--acento); padding-bottom: 8px; margin-bottom: 14px;
+  }
+  section h3 { font-size: 15px; color: var(--azul-oscuro); margin: 14px 0 6px; }
+
+  p { margin-bottom: 8px; }
+  ul { padding-left: 20px; margin-bottom: 8px; }
+  li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13.5px; }
+  th, td { border: 1px solid var(--gris-borde); padding: 9px 11px; text-align: left; vertical-align: top; }
+  th { background: var(--gris-claro); color: var(--azul-oscuro); font-weight: 600; }
+
+  .destacado { background: var(--gris-claro); border-left: 4px solid var(--acento); padding: 12px 14px; border-radius: 4px; }
+
+  .cierre { background: var(--gris-claro); padding: 18px 20px; border-radius: 6px; }
+
+  footer { text-align: center; padding: 20px; color: #7a8592; font-size: 12px; border-top: 1px solid var(--gris-borde); }
+
+  @media print {
+    @page { size: A4; margin: 18mm 16mm; }
+    html, body { margin: 0; padding: 0; }
+    body { background: #fff; font-size: 12px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+
+    .portada {
+      padding: 40px 30px;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+    .portada .meta { border-top-color: rgba(255,255,255,0.3); }
+
+    th, td, .destacado, .cierre { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+    /* tablas: cada fila intacta, permitir dividirse entre filas */
+    table { break-inside: auto; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { break-inside: avoid; page-break-inside: avoid; }
+    td, th { break-inside: avoid; }
+
+    /* evitar cortes feos dentro de elementos */
+    .destacado, .cierre, h2, h3 { break-inside: avoid; page-break-inside: avoid; }
+
+    section { margin-bottom: 14px; }
+    section + section { page-break-before: auto; }
+
+    .contenido { padding: 30px 8px 10px; }
+    section h2 { margin-top: 2px; }
+
+    footer { padding: 12px 0 4px; page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ======== PORTADA ======== -->
+    <div class="portada">
+      <div class="logo">
+        <img src="logo.png" alt="Logo Leandro Calfin" />
+      </div>
+      <h1>Servicios, Costos y Honorarios</h1>
+      <p>Sitio Web Institucional</p>
+      <div class="meta">
+        <div><strong>Preparado para</strong>IMP Servicios SRL</div>
+        <div><strong>Presentado por</strong>Leandro Calfin · Desarrollador de Software</div>
+        <div><strong>Fecha de vigencia</strong>01/09/2026</div>
+      </div>
+    </div>
+
+    <div class="contenido">
+
+      <!-- ======== 1. RESUMEN ======== -->
+      <section>
+        <h2>1. Resumen de la propuesta económica</h2>
+        <p>La inversión total se compone de un <strong>desarrollo inicial</strong> (pago único) y de <strong>costos recurrentes</strong> que se detallan a continuación.</p>
+        <table>
+          <thead><tr><th>Concepto</th><th>Tipo</th><th>Monto</th></tr></thead>
+          <tbody>
+            <tr><td>Desarrollo del sitio web</td><td>Pago único</td><td> USD 200 </td></tr>
+            <tr><td>Mantenimiento mensual</td><td>Recurrente</td><td>[ $ / mes ]</td></tr>
+            <tr><td>Servicios de terceros (dominio, hosting)</td><td>Recurrente</td><td>a cargo del cliente</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ======== 2. HONORARIOS DE DESARROLLO ======== -->
+      <section>
+        <h2>2. Honorarios de desarrollo (pago único)</h2>
+        <p>El desarrollo del sitio web incluye:</p>
+        <ul>
+          <li>Diseño y maquetación del sitio (responsive).</li>
+          <li>Desarrollo de las funcionalidades.</li>
+          <li>Panel de administración.</li>
+          <li>Integración del formulario de contacto y WhatsApp.</li>
+          <li>Configuración de la base de datos.</li>
+          <li>Configuración del dominio y del certificado SSL.</li>
+          <li>Pruebas, correcciones y publicación.</li>
+          <li>Documentación y capacitación inicial.</li>
+        </ul>
+        <div class="destacado"><strong>Total desarrollo: [ $ ]</strong> (pago único)</div>
+      </section>
+
+      <!-- ======== 3. SERVICIOS OPCIONALES ======== -->
+      <section>
+        <h2>3. Servicios opcionales</h2>
+        <p>El cliente podrá contratar los siguientes servicios adicionales, según su conveniencia:</p>
+        <table>
+          <thead><tr><th>Servicio</th><th>Descripción / Beneficio</th><th>Costo</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Google Analytics</strong></td>
+              <td>Seguimiento de visitas: cantidad de visitantes, páginas más vistas, origen y dispositivos. Permite conocer cómo interactúan los usuarios con el sitio.</td>
+              <td>[ incl. / $ ]</td>
+            </tr>
+            <tr>
+              <td><strong>Redacción / maquetación de contenidos</strong></td>
+              <td>Elaboración y organización de textos e imágenes del sitio.</td>
+              <td>[ $ ]</td>
+            </tr>
+            <tr>
+              <td><strong>Otras integraciones</strong></td>
+              <td>Cualquier funcionalidad adicional no prevista en el alcance.</td>
+              <td>A cotizar</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ======== 4. COSTOS RECURRENTES ======== -->
+      <section>
+        <h2>4. Costos recurrentes</h2>
+
+        <h3>4.1 Mantenimiento mensual</h3>
+        <p>El plan de mantenimiento garantiza el correcto funcionamiento del sitio en el tiempo, e incluye:</p>
+        <ul>
+          <li>Actualizaciones de seguridad y del sistema.</li>
+          <li>Copias de respaldo (backups) de la información.</li>
+          <li>Monitoreo de disponibilidad del sitio.</li>
+          <li>Soporte técnico para resolver dudas o inconvenientes.</li>
+          <li>Pequeñas modificaciones de contenido dentro del alcance.</li>
+        </ul>
+        <div class="destacado"><strong>Mantenimiento mensual: [ $ / mes ]</strong><br/>[Opcional: plan semestral/anual con descuento por adelanto]</div>
+
+        <h3>4.2 Servicios de terceros (a cargo del cliente)</h3>
+        <p>Estos servicios los abona el cliente directamente a cada proveedor, ya que las cuentas y el dominio pertenecen a la empresa:</p>
+        <table>
+          <thead><tr><th>Servicio</th><th>Función</th><th>Costo aprox.</th></tr></thead>
+          <tbody>
+            <tr><td>Dominio .com.ar</td><td>Nombre del sitio (NIC Argentina)</td><td>[ $ / año ]</td></tr>
+            <tr><td>Hosting / servidor</td><td>Mantiene el sitio activo y sin demoras</td><td>[ $ / mes ]</td></tr>
+            <tr><td>Base de datos</td><td>Almacenamiento de la información</td><td>[ $ 0 / gratis ]</td></tr>
+          </tbody>
+        </table>
+        <p><em>Todas las cuentas y el dominio se registran a nombre de IMP Servicios SRL.</em></p>
+      </section>
+
+      <!-- ======== 5. PLANES / COMPARATIVA ======== -->
+      <section>
+        <h2>5. Comparativa: plan básico vs plan recomendado</h2>
+        <table>
+          <thead><tr><th></th><th>Plan Básico (gratuito)</th><th>Plan Recomendado (pago)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Disponibilidad</strong></td><td>El sitio puede presentar demoras al acceder</td><td>Sitio siempre activo y de carga rápida</td></tr>
+            <tr><td><strong>Velocidad de carga</strong></td><td>Variable</td><td>Rápida y estable</td></tr>
+            <tr><td><strong>Confianza</strong></td><td>Suficiente para sitios simples</td><td>Recomendado para empresas</td></tr>
+            <tr><td><strong>Costo</strong></td><td>[ $ 0 ]</td><td>[ $ / mes ]</td></tr>
+          </tbody>
+        </table>
+        <p>Para una empresa institucional se recomienda el <strong>plan de pago</strong>, que garantiza un sitio siempre disponible y sin demoras, brindando una imagen profesional.</p>
+      </section>
+
+      <!-- ======== 6. CONDICIONES DE PAGO ======== -->
+      <section>
+        <h2>6. Condiciones de pago</h2>
+        <ul>
+          <li><strong>Honorarios de desarrollo:</strong> [ X ]% al inicio y [ Y ]% a la entrega del sitio.</li>
+          <li><strong>Formas de pago:</strong> transferencia bancaria / otros.</li>
+          <li><strong>Mantenimiento:</strong> cobro mensual, día de corte [ fecha ].</li>
+          <li><strong>Facturación:</strong> [ factura A/B, IVA — detallar ].</li>
+        </ul>
+      </section>
+
+      <!-- ======== 7. VIGENCIA ======== -->
+      <section>
+        <h2>7. Vigencia de la cotización</h2>
+        <p>Los montos y condiciones aquí indicados tienen una validez de <strong>[ X ] días</strong> a partir de la fecha de emisión.</p>
+      </section>
+
+      <!-- ======== 8. FUERA DE ALCANCE ======== -->
+      <section>
+        <h2>8. Fuera de alcance (costos adicionales)</h2>
+        <p>Se consideran fuera del presente presupuesto y se cotizan por separado:</p>
+        <ul>
+          <li>Rediseños mayores o nuevas secciones no previstas.</li>
+          <li>Modificaciones fuera del alcance del mantenimiento contratado.</li>
+          <li>Servicios de marketing, SEO avanzado o publicidad.</li>
+        </ul>
+      </section>
+
+      <!-- ======== 9. PROXIMO PASO ======== -->
+      <section>
+        <h2>9. Próximo paso</h2>
+        <div class="cierre">
+          <p>Este documento complementa la <strong>Propuesta de Sitio Web Institucional</strong> (Documento 1).</p>
+          <p style="margin-top:10px;">Si la propuesta es de su interés, el siguiente paso es la firma del contrato y la coordinación del inicio del proyecto.</p>
+          <p style="margin-top:8px;"><strong>Quedo a disposición para resolver cualquier consulta.</strong></p>
+          <p style="margin-top:8px;"><strong>Leandro Calfin</strong> — Desarrollador de Software<br />lean.calfin@gmail.com / +543512259123 / Rio Gallegos, Santa Cruz.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      Servicios, Costos y Honorarios — Documento 2 | Leandro Calfin · Desarrollador de Software | 2026
+    </footer>
+  </div>
+</body>
+</html>

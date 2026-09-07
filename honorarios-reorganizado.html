@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Servicios, Costos y Honorarios</title>
+<style>
+  :root {
+    --azul: #1f3a5f;
+    --azul-oscuro: #16283f;
+    --gris: #4a5568;
+    --gris-claro: #eef1f5;
+    --gris-borde: #d7dde4;
+    --acento: #3b82f6;
+    --texto: #222b35;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--texto);
+    background: #f4f6f9;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 24px auto;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 60px);
+  }
+
+  footer { margin-top: auto; }
+
+  /* ---- Portada ---- */
+  .portada {
+    background: linear-gradient(
+      135deg,
+      #07111C 0%,
+      #14283A 30%,
+      #203C52 50%,
+      #102334 72%,
+      #060D15 100%
+    );
+    color: #fff;
+    padding: 60px 48px;
+    text-align: center;
+  }
+  .portada .logo { margin-bottom: 26px; }
+  .portada .logo img { max-height: 100px; }
+  .portada .logo-placeholder {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 16px; letter-spacing: 2px; color: #fff;
+    border: 1px dashed rgba(255,255,255,0.4); padding: 10px 18px; border-radius: 6px;
+  }
+  .portada h1 { font-size: 32px; font-weight: 700; margin: 18px 0 8px; line-height: 1.2; }
+  .portada p { color: #cfdbea; font-size: 15px; }
+  .portada .tag { letter-spacing: 3px; text-transform: uppercase; font-size: 12px; color: #b8cbe4; }
+  .portada .meta {
+    margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 22px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  .portada .meta div { font-size: 13px; color: #e2e9f4; }
+  .portada .meta strong { display: block; color: #fff; font-size: 14px; }
+
+  /* ---- contenido ---- */
+  .contenido { padding: 40px 48px; }
+
+  section { margin-bottom: 30px; }
+  section h2 {
+    font-size: 20px; color: var(--azul); font-weight: 700;
+    border-bottom: 2px solid var(--acento); padding-bottom: 8px; margin-bottom: 14px;
+  }
+  section h3 { font-size: 15px; color: var(--azul-oscuro); margin: 14px 0 6px; }
+
+  p { margin-bottom: 8px; }
+  ul { padding-left: 20px; margin-bottom: 8px; }
+  li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13.5px; }
+  th, td { border: 1px solid var(--gris-borde); padding: 9px 11px; text-align: left; vertical-align: top; }
+  th { background: var(--gris-claro); color: var(--azul-oscuro); font-weight: 600; }
+
+  .tabla-espacio { padding-top: 40px; }
+
+  .destacado { background: var(--gris-claro); border-left: 4px solid var(--acento); padding: 12px 14px; border-radius: 4px; }
+
+  .cierre { background: var(--gris-claro); padding: 18px 20px; border-radius: 6px; }
+
+  footer { text-align: center; padding: 20px; color: #7a8592; font-size: 12px; border-top: 1px solid var(--gris-borde); }
+
+  a { color: var(--acento); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  @media print {
+    @page { size: A4; margin: 18mm 16mm; }
+    html, body { margin: 0; padding: 0; }
+    body { background: #fff; font-size: 12px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+
+    .portada {
+      padding: 40px 30px;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+    .portada .meta { border-top-color: rgba(255,255,255,0.3); }
+
+    th, td, .destacado, .cierre { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+.tabla-espacio { padding-top: 40px; }
+  .nueva-hoja-mas { padding-top: 80px; }
+
+    /* tablas: cada fila intacta, permitir dividirse entre filas */
+    table { break-inside: auto; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { break-inside: avoid; page-break-inside: avoid; }
+    td, th { break-inside: avoid; }
+
+    /* evitar cortes feos dentro de elementos */
+    .destacado, .cierre, h2, h3 { break-inside: avoid; page-break-inside: avoid; }
+
+    section { margin-bottom: 14px; }
+    section + section { page-break-before: auto; }
+
+    .contenido { padding: 30px 8px 40px; }
+    .nueva-hoja { page-break-before: always; break-before: always; }
+    .nueva-hoja { padding-top: 60px; }
+    .nueva-hoja-mas { page-break-before: always; break-before: always; }
+.nueva-hoja-mas { padding-top: 40px; }
+    section h2 { margin-top: 2px; }
+
+    footer { padding: 12px 0 4px; page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ======== PORTADA ======== -->
+    <div class="portada">
+      <div class="logo">
+        <img src="logo.png" alt="Logo Leandro Calfin" />
+      </div>
+      <h1>Servicios, Costos y Honorarios</h1>
+      <p>Sitio Web Institucional</p>
+      <div class="meta">
+        <div><strong>Preparado para</strong>IMP Servicios SRL</div>
+        <div><strong>Presentado por</strong>Leandro Calfin · Desarrollador de Software</div>
+        <div><strong>Fecha de vigencia</strong>01/09/2026</div>
+      </div>
+    </div>
+
+    <div class="contenido">
+
+      <!-- ======== 1. SERVICIOS NECESARIOS ======== -->
+      <section>
+        <h2>1. Servicios necesarios para el funcionamiento</h2>
+        <p>Para que el sitio web pueda permanecer publicado y funcionar correctamente, requiere una serie de servicios externos. Las cuentas correspondientes serán registradas a nombre de <strong>IMP Servicios SRL</strong> y los costos, cuando existan, serán abonados directamente por la empresa al proveedor correspondiente.</p>
+
+        <h3>1.1 Alojamiento del sitio</h3>
+        <p>Es el servicio que permite mantener el sitio publicado y disponible en Internet las 24 horas.</p>
+        <p>Debido a la estructura del proyecto, el sitio se divide en dos partes que pueden alojarse en servicios distintos:</p>
+        <ul>
+          <li><strong>Parte pública (frontend):</strong> lo que ven los visitantes (páginas, diseño, galería).</li>
+          <li><strong>Administración y gestión (backend):</strong> donde se procesan los formularios, se administran los contenidos y se guarda la información.</li>
+        </ul>
+
+        <h3>Alojamiento de la parte pública (frontend)</h3>
+        <table>
+          <thead><tr><th>Opción</th><th>Características</th><th>Costo aprox.</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://vercel.com" target="_blank" rel="noopener">Vercel</a></strong> — Plan gratuito (Hobby)</td><td>Alojamiento rápido y confiable para sitios web. Más que suficiente para el lanzamiento y el uso normal del sitio.</td><td>Gratuito</td></tr>
+            <tr><td><strong><a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a></strong> — Gratuito</td><td>Para sitios institucionales. CDN global, SSL y dominio personalizado sin costo. Excelente opción para un sitio de bajo tráfico.</td><td>Gratuito</td></tr>
+            <tr><td><strong><a href="https://vercel.com" target="_blank" rel="noopener">Vercel</a></strong> — Plan Pro</td><td>Aumenta los límites de tráfico y recursos. Se considera únicamente si el sitio crece mucho o el uso lo requiere.</td><td>≈ USD 20 / mes</td></tr>
+            <tr><td><strong><a href="https://www.netlify.com" target="_blank" rel="noopener">Netlify</a></strong> — Personal</td><td>Alternativa paga para proyectos profesionales.</td><td>≈ USD 9 / mes</td></tr>
+          </tbody>
+        </table>
+        <p><em>Si el sitio crece considerablemente y se hace necesario, el sitio web podrá migrarse a un plan pago (por ejemplo, Vercel Pro o Netlify Personal) para ampliar los límites de tráfico y recursos.</em></p>
+
+        <h3 class="nueva-hoja">Alojamiento de la administración (backend)</h3>
+        <table>
+          <thead><tr><th>Opción</th><th>Características</th><th>Costo aprox.</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://render.com" target="_blank" rel="noopener">Render</a></strong> — Plan gratuito</td><td>Servicio donde se procesa y administra la información del sitio. Suficiente para el lanzamiento, con algunas limitaciones: si el sitio pasa un tiempo sin visitas, el servicio se "duerme" y la siguiente carga de contenido es más lenta (demora unos segundos en volver a estar activo).</td><td>Gratuito</td></tr>
+            <tr><td><strong><a href="https://render.com" target="_blank" rel="noopener">Render</a></strong> — Plan Starter</td><td>Mantiene el servicio siempre activo: el contenido carga de inmediato, sin la demora de "arranque" del plan gratuito. Se considera si el sitio crece o se prefiere una respuesta inmediata.</td><td>≈ USD 7 / mes</td></tr>
+          </tbody>
+        </table>
+        <p><em>Si el sitio crece considerablemente y se hace necesario, la parte de administración podrá migrarse al plan de pago de Render (Starter) para mantener el servicio siempre activo y con mayor capacidad.</em></p>
+        <div class="destacado"><strong>Recomendación para IMP Servicios:</strong> alojar la parte pública en <strong><a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a></strong> (gratuito) y la parte de administración en <strong><a href="https://render.com" target="_blank" rel="noopener">Render</a></strong> en su plan <strong>Starter</strong>, para que el contenido del sitio aparezca sin demora.</div>
+
+        <h3>1.2 Base de datos</h3>
+        <p>Es el servicio donde se almacena la información administrable del sitio, como servicios, certificaciones, textos, datos de contacto y demás contenidos que puedan modificarse desde el panel de administración.</p>
+        <table>
+          <thead><tr><th>Opción</th><th>Características</th><th>Costo aprox.</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener">MongoDB Atlas</a></strong> — Plan gratuito</td><td>Base de datos en la nube con plan gratuito permanente (512 MB). Sin vencimiento y suficiente para este tipo de sitio.</td><td>Gratuito</td></tr>
+            <tr><td><strong><a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener">MongoDB Atlas</a></strong> — Plan M2</td><td>Aumenta el almacenamiento y el rendimiento. Se considera únicamente si el sitio crece mucho y se necesita más capacidad.</td><td>≈ USD 9 / mes</td></tr>
+          </tbody>
+        </table>
+        <p><em>Si el sitio crece considerablemente y se hace necesario, la base de datos podrá pasarse al plan de pago de MongoDB Atlas (M2) para ampliar el almacenamiento y el rendimiento.</em></p>
+        <div class="destacado"><strong>Recomendación para IMP Servicios:</strong> utilizar <strong><a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener">MongoDB Atlas</a></strong> en su plan gratuito, que no expira y cubre con holgura el almacenamiento de los contenidos del sitio.</div>
+
+        <h3>1.3 Dominio</h3>
+        <p>El dominio es el nombre o dirección que utilizarán los usuarios para acceder al sitio, por ejemplo: <strong>impservicios.com.ar</strong>.</p>
+        <p>Existen distintos proveedores donde puede registrarse un dominio. Para dominios argentinos se recomienda priorizar una opción que permita mantener la titularidad directamente a nombre de la empresa.</p>
+        <table>
+          <thead><tr><th>Opción</th><th>Características</th><th>Costo aprox.</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://nic.ar" target="_blank" rel="noopener">NIC Argentina</a></strong></td><td>Registro directo de dominios .com.ar a nombre del titular, sin intermediarios.</td><td>≈ $8500 / año</td></tr>
+          </tbody>
+        </table>
+        <div class="nueva-hoja-mas">
+        <table>
+          <tbody>
+            <tr><td><strong><a href="https://www.donweb.com" target="_blank" rel="noopener">DonWeb</a></strong></td><td>Registro y gestión de dominios .com.ar con renovación asistida. También ofrece hosting.</td><td>≈ $17.490 / año</td></tr>
+            <tr><td><strong><a href="https://www.hostinger.com.ar" target="_blank" rel="noopener">Hostinger</a></strong></td><td>Registro de dominios .com con precios de lanzamiento y renovación a tarifa vigente.</td><td>≈ $5.999 / año</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="destacado"><strong>Recomendación para IMP Servicios:</strong> registrar el dominio <strong>.com.ar</strong> directamente mediante <strong><a href="https://nic.ar" target="_blank" rel="noopener">NIC Argentina</a></strong>, organismo oficial encargado de la administración de los dominios .ar, permitiendo que la titularidad y gestión del dominio permanezcan directamente a nombre de IMP Servicios SRL.</div>
+
+        <h3>1.4 Almacenamiento de imágenes</h3>
+        <p>Este servicio permite almacenar y optimizar las imágenes utilizadas en la galería, servicios y demás secciones administrables del sitio.</p>
+        <table>
+          <thead><tr><th>Opción</th><th>Características</th><th>Costo aprox.</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://cloudinary.com" target="_blank" rel="noopener">Cloudinary</a></strong></td><td>Almacena y optimiza las imágenes del sitio de forma sencilla y automática. Su plan gratuito cubre con holgura el uso de este sitio.</td><td>Gratuito</td></tr>
+          </tbody>
+        </table>
+        <div class="destacado"><strong>Recomendación para IMP Servicios:</strong> utilizar <strong><a href="https://cloudinary.com" target="_blank" rel="noopener">Cloudinary</a></strong> en su plan gratuito para el almacenamiento, optimización y distribución de las imágenes del sitio, cuya capacidad resulta adecuada para el uso previsto inicialmente.</div>
+      </section>
+
+      <!-- ======== 2. HERRAMIENTAS COMPLEMENTARIAS ======== -->
+      <section>
+        <h2>2. Herramientas y servicios complementarios</h2>
+        <p>Estas herramientas complementan el funcionamiento del sitio y permiten mejorar el contacto con los usuarios, conocer su rendimiento y facilitar su presencia en Internet.</p>
+        <p>Su uso es <strong>opcional</strong> y queda a elección de la empresa. De todas formas, <strong>recomiendo utilizarlas</strong>, ya que permiten ver el tráfico, el crecimiento y el comportamiento de los visitantes del sitio. Cada herramienta cuenta con <strong>su propio panel</strong> donde se pueden consultar las estadísticas correspondientes.</p>
+        <table>
+          <thead><tr><th>Herramienta</th><th>¿Para qué sirve?</th><th>Costo</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://analytics.google.com" target="_blank" rel="noopener">Google Analytics</a></strong></td><td>Permite conocer la cantidad de visitantes, páginas más consultadas, origen de las visitas, dispositivos utilizados y determinadas acciones realizadas dentro del sitio. Cuenta con su propio panel de estadísticas.</td><td>Gratuito</td></tr>
+            <tr><td><strong><a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a></strong></td><td>Permite conocer cómo aparece el sitio en Google, qué búsquedas generan impresiones y clics, y detectar problemas de indexación. Cuenta con su propio panel de estadísticas.</td><td>Gratuito</td></tr>
+          </tbody>
+        </table>
+        <p><em>Los servicios de terceros pueden modificar sus condiciones, límites o precios en el futuro.</em></p>
+        <div class="destacado"><strong>Recomendación:</strong> configurar las herramientas de estadísticas y seguimiento desde el lanzamiento del sitio. Esto permitirá contar con información histórica sobre su utilización y evaluar, con datos reales, si el crecimiento del tráfico hace necesario modificar alguno de los servicios contratados.</div>
+      </section>
+
+      <!-- ======== 3. CONFIGURACION RECOMENDADA ======== -->
+      <section>
+        <h2>3. Configuración recomendada</h2>
+        <p>Para el lanzamiento inicial del sitio se propone utilizar una combinación de servicios adecuada al tráfico esperado, priorizando la estabilidad, la propiedad de las cuentas por parte de la empresa y la posibilidad de ampliar los planes en caso de crecimiento.</p>
+        <div class="tabla-espacio">
+        <table>
+          <thead><tr><th>Servicio</th><th>Opción recomendada</th><th>Motivo</th></tr></thead>
+          <tbody>
+            <tr><td>Alojamiento (frontend)</td><td><a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a></td><td>CDN global, SSL y dominio personalizado sin costo. Ideal para sitios institucionales.</td></tr>
+            <tr><td>Alojamiento (backend)</td><td><a href="https://render.com" target="_blank" rel="noopener">Render</a> — plan Starter</td><td>Procesa y administra la información del sitio y mantiene el contenido disponible sin demora.</td></tr>
+            <tr><td>Base de datos</td><td><a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener">MongoDB Atlas</a> (plan gratuito)</td><td>Almacena los contenidos del sitio sin costo ni vencimiento.</td></tr>
+            <tr><td>Dominio</td><td>NIC Argentina</td><td>Titularidad directa de IMP Servicios SRL.</td></tr>
+            <tr><td>Imágenes</td><td><a href="https://cloudinary.com" target="_blank" rel="noopener">Cloudinary</a></td><td>Almacena y optimiza las imágenes del sitio sin costo.</td></tr>
+            <tr><td>Estadísticas</td><td>Google Analytics + Search Console</td><td>Permiten medir visitas y rendimiento en Google desde el inicio.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <!-- ======== 4. PLAZO ESTIMADO ======== -->
+      <section>
+        <h2>4. Plazo estimado de desarrollo</h2>
+        <p>El plazo estimado para el desarrollo, configuración, pruebas y puesta en funcionamiento del sitio web es de aproximadamente <strong>2 semanas</strong>, contadas a partir de la confirmación del inicio del proyecto y la recepción del material necesario.</p>
+        <p>Este plazo contempla el desarrollo de las funcionalidades definidas en la propuesta, la configuración de los servicios, las pruebas generales y los ajustes previos a la publicación.</p>
+        <p>El plazo podrá extenderse en caso de demoras en la entrega de textos, imágenes, datos de acceso, aprobaciones u otro material necesario por parte del cliente, así como ante modificaciones o funcionalidades adicionales solicitadas durante el desarrollo.</p>
+        <p>Las modificaciones que impliquen un cambio en el alcance originalmente acordado podrán requerir una revisión del plazo de entrega y del presupuesto.</p>
+      </section>
+
+      <!-- ======== 5. HONORARIOS ======== -->
+      <section>
+        <h2>5. Honorarios profesionales</h2>
+        <p>Los honorarios corresponden al trabajo profesional de diseño, desarrollo, configuración y puesta en funcionamiento del proyecto. Los costos de servicios externos contratados a nombre del cliente se detallan de manera independiente.</p>
+        <p>El desarrollo del sitio web incluye:</p>
+        <ul>
+          <li>Diseño y maquetación del sitio adaptable a computadoras, tablets y celulares.</li>
+          <li>Desarrollo de las funcionalidades previstas en la propuesta.</li>
+          <li>Panel de administración.</li>
+          <li>Integración del formulario de contacto y WhatsApp.</li>
+          <li>Configuración de la base de datos y servicios necesarios.</li>
+          <li>Configuración del dominio y certificado SSL/HTTPS.</li>
+          <li>Pruebas, correcciones y publicación.</li>
+          <li>Documentación y capacitación inicial para el uso del panel.</li>
+        </ul>
+        <div class="destacado"><strong>HONORARIOS POR DESARROLLO: USD 200</strong><br/>Pago único</div>
+      </section>
+
+      <!-- ======== 5. MANTENIMIENTO ======== -->
+      <section>
+        <h2 class="nueva-hoja">6. Mantenimiento y soporte</h2>
+
+        <h3>Soporte posterior a la entrega</h3>
+        <p>El desarrollo incluye un período de <strong>30 días</strong> posteriores a la publicación definitiva para la corrección, <strong>sin costo adicional</strong>, de errores relacionados con las funcionalidades incluidas originalmente en el proyecto.</p>
+        <p>Este período <strong>no incluye</strong> nuevas funcionalidades, modificaciones de diseño solicitadas posteriormente ni cambios en el alcance original.</p>
+        <p>De esta manera se diferencian tres supuestos: los errores propios del desarrollo están cubiertos por la garantía inicial; el mantenimiento preventivo se contrata aparte (USD 40 / mes); y las funcionalidades nuevas se presupuestan por separado.</p>
+
+        <h3>5.1 Sin mantenimiento — $0 / mes</h3>
+        <ul>
+          <li>El cliente administra el contenido mediante el panel de administración.</li>
+          <li>No incluye monitoreo periódico ni modificaciones realizadas por el desarrollador.</li>
+          <li>Las intervenciones técnicas podrán solicitarse <strong>a requerimiento del cliente</strong> y serán cotizadas individualmente.</li>
+        </ul>
+
+        <h3>5.2 Mantenimiento básico — USD 40 / mes</h3>
+        <ul>
+          <li>Revisión periódica del funcionamiento general del sitio.</li>
+          <li>Comprobación del formulario de contacto y canales principales.</li>
+          <li>Actualización de dependencias cuando corresponda.</li>
+          <li>Revisión básica de seguridad.</li>
+          <li>Verificación de los mecanismos de respaldo disponibles.</li>
+          <li>Soporte técnico.</li>
+          <li>Hasta 2 horas mensuales de modificaciones menores.</li>
+          <li>Se consideran modificaciones menores los cambios de textos, imágenes, información de contacto y pequeños ajustes visuales que no impliquen nuevas funcionalidades o modificaciones estructurales.</li>
+        </ul>
+        <p><em>La contratación de mantenimiento es opcional y no afecta la propiedad del sitio ni de las cuentas asociadas.</em></p>
+      </section>
+
+      <!-- ======== 6. RESUMEN ======== -->
+      <section>
+        <h2>7. Resumen y comparativa de costos</h2>
+        <table>
+          <thead><tr><th>Concepto</th><th>Selección recomendada</th><th>Costo</th><th>Frecuencia</th></tr></thead>
+          <tbody>
+            <tr><td>Alojamiento (frontend)</td><td><a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a></td><td>$0</td><td>Sin costo (uso básico)</td></tr>
+            <tr><td>Alojamiento (backend)</td><td><a href="https://render.com" target="_blank" rel="noopener">Render</a> — plan Starter</td><td>≈ USD 7</td><td>Mensual</td></tr>
+            <tr><td>Base de datos</td><td><a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener">MongoDB Atlas</a> (plan gratuito)</td><td>$0</td><td>Sin costo</td></tr>
+            <tr><td>Dominio</td><td>NIC Argentina</td><td>≈ USD 15</td><td>Anual</td></tr>
+            <tr><td>Almacenamiento de imágenes</td><td><a href="https://cloudinary.com" target="_blank" rel="noopener">Cloudinary</a></td><td>$0</td><td>Sin costo</td></tr>
+            <tr><td>Desarrollo</td><td>Leandro Calfin</td><td>USD 200</td><td>Pago único</td></tr>
+            <tr><td>Mantenimiento</td><td>Opcional</td><td>USD 40</td><td>Mensual</td></tr>
+          </tbody>
+        </table>
+        <p><em>* Si el sitio crece mucho y se hace necesario, los demás servicios podrán migrarse a sus planes de pago: Vercel (≈ USD 20 / mes) o MongoDB Atlas (≈ USD 9 / mes).</em></p>
+      </section>
+
+      <!-- ======== 7. CONDICIONES ======== -->
+      <section>
+        <h2 class="nueva-hoja">8. Condiciones de pago y vigencia</h2>
+        <ul>
+          <li><strong>Honorarios de desarrollo:</strong> 20% al inicio y 80% antes de la publicación definitiva.</li>
+          <li><strong>Formas de pago:</strong> transferencia bancaria / otros.</li>
+          <li><strong>Servicios externos:</strong> abonados directamente por IMP Servicios SRL al proveedor correspondiente.</li>
+          <li><strong>Mantenimiento:</strong> en caso de contratarse, se abonará según el plan seleccionado.</li>
+          <li><strong>Vigencia:</strong> los montos y condiciones de esta propuesta tienen una validez de 30 días desde su fecha de emisión.</li>
+          <li><strong>Precios de terceros:</strong> son de referencia y pueden ser modificados por cada proveedor.</li>
+        </ul>
+      </section>
+
+      <!-- ======== 8. FUERA DE ALCANCE ======== -->
+      <section>
+        <h2>9. Fuera de alcance y costos adicionales</h2>
+        <p>Se consideran fuera del presente presupuesto y podrán cotizarse por separado:</p>
+        <ul>
+          <li>Nuevas secciones o funcionalidades no previstas en la propuesta original.</li>
+          <li>Rediseños mayores posteriores a la aprobación del diseño.</li>
+          <li>Integraciones con sistemas externos no contempladas.</li>
+          <li>Modificaciones fuera del mantenimiento contratado.</li>
+          <li>Migraciones futuras de servicios o proveedores.</li>
+          <li>Licencias o servicios de terceros no contemplados inicialmente.</li>
+          <li>Servicios de marketing digital, campañas publicitarias y SEO avanzado o seguimiento continuo.</li>
+        </ul>
+      </section>
+
+      <!-- ======== 9. PROXIMO PASO ======== -->
+      <section>
+        <h2>10. Próximo paso</h2>
+        <div class="cierre">
+          <p>Este documento complementa la <strong>Propuesta de Sitio Web Institucional</strong> (Documento 1).</p>
+          <p style="margin-top:10px;">Una vez seleccionados los servicios y condiciones, la configuración elegida será incorporada al contrato de desarrollo.</p>
+          <p style="margin-top:8px;">Luego de la firma del contrato y del pago inicial correspondiente, se coordinará el inicio del proyecto.</p>
+          <p style="margin-top:8px;"><strong>Quedo a disposición para resolver cualquier consulta.</strong></p>
+          <p style="margin-top:8px;"><strong>Leandro Calfin</strong> — Desarrollador de Software<br />lean.calfin@gmail.com / +543512259123 / Río Gallegos, Santa Cruz.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      Servicios, Costos y Honorarios — Documento 2 | Leandro Calfin · Desarrollador de Software | 2026
+    </footer>
+  </div>
+</body>
+</html>
