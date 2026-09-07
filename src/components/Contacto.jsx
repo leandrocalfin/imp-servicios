@@ -1,4 +1,21 @@
+import { Mail } from "lucide-react";
+
 import SectionTitle from "./SectionTitle";
+
+/* ==========================================
+   ICONO WHATSAPP
+========================================== */
+const WhatsAppIcon = ({ size = 20 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M12.04 2C6.5 2 2 6.48 2 12c0 1.76.46 3.48 1.33 5L2 22l5.14-1.35A10.02 10.02 0 0 0 12.04 22C17.56 22 22 17.52 22 12S17.56 2 12.04 2Zm0 18.18a8.16 8.16 0 0 1-4.16-1.14l-.3-.18-3.05.8.82-2.96-.2-.3A8.1 8.1 0 0 1 3.86 12c0-4.5 3.67-8.18 8.18-8.18S20.18 7.5 20.18 12s-3.64 8.18-8.14 8.18Zm4.48-6.12c-.25-.13-1.47-.72-1.7-.8-.23-.08-.4-.13-.57.13-.16.25-.64.8-.78.96-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.73-.65-1.23-1.46-1.37-1.7-.15-.25-.02-.38.1-.5.12-.12.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.57-1.38-.78-1.9-.2-.49-.41-.42-.57-.43h-.48c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29Z" />
+  </svg>
+);
 
 /* ==========================================
    ICONO INSTAGRAM
@@ -74,6 +91,106 @@ const Contacto = () => {
                 CANALES
             ========================================== */}
             <div className="mt-7 space-y-2">
+
+              {/* EMAIL */}
+              <a
+                className="
+                  group flex items-center gap-3
+                  border border-white/10
+                  bg-white/[0.03]
+                  p-3
+                  transition-all duration-300
+                  hover:border-[#1677B8]/70
+                  hover:bg-[#1677B8]/10
+                "
+              >
+                <div
+                  className="
+                    flex h-10 w-10 shrink-0
+                    items-center justify-center
+                    bg-[#1677B8]
+                    text-white
+                    transition-transform duration-300
+                    group-hover:scale-105
+                  "
+                >
+                  <Mail size={18} />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#4FA8E0]">
+                    Email
+                  </p>
+                </div>
+              </a>
+
+              {/* WHATSAPP ELIAS */}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  group flex items-center gap-3
+                  border border-white/10
+                  bg-white/[0.03]
+                  p-3
+                  transition-all duration-300
+                  hover:border-[#1677B8]/70
+                  hover:bg-[#1677B8]/10
+                "
+              >
+                <div
+                  className="
+                    flex h-10 w-10 shrink-0
+                    items-center justify-center
+                    bg-[#1677B8]
+                    text-white
+                    transition-transform duration-300
+                    group-hover:scale-105
+                  "
+                >
+                  <WhatsAppIcon size={19} />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#4FA8E0]">
+                    WhatsApp
+                  </p>
+                </div>
+              </a>
+
+              {/* WHATSAPP LAUTARO */}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  group flex items-center gap-3
+                  border border-white/10
+                  bg-white/[0.03]
+                  p-3
+                  transition-all duration-300
+                  hover:border-[#1677B8]/70
+                  hover:bg-[#1677B8]/10
+                "
+              >
+                <div
+                  className="
+                    flex h-10 w-10 shrink-0
+                    items-center justify-center
+                    bg-[#1677B8]
+                    text-white
+                    transition-transform duration-300
+                    group-hover:scale-105
+                  "
+                >
+                  <WhatsAppIcon size={19} />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#4FA8E0]">
+                    WhatsApp
+                  </p>
+                </div>
+              </a>
 
               {/* INSTAGRAM */}
               <a

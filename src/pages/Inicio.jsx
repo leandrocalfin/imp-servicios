@@ -6,6 +6,7 @@ import Servicios from "../components/Servicios";
 import Certificaciones from "../components/Certificaciones";
 import Galeria from "../components/Galeria";
 import BasesOperativas from "../components/BasesOperativas";
+import WhatsApp from "../components/WhatsApp";
 import Contacto from "../components/Contacto";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
@@ -25,6 +26,7 @@ const Inicio = () => {
       <BasesOperativas />
       <Contacto />
       <Footer />
+      <WhatsApp />
     </main>
   );
 };

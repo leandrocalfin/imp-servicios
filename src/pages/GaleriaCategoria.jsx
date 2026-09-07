@@ -8,6 +8,7 @@ import {
 
 import Navbar from "../components/NavBar";
 import Footer from "../components/Footer";
+import WhatsApp from "../components/WhatsApp";
 
 const categorias = {
   piping: {
@@ -632,6 +633,11 @@ const GaleriaCategoria = () => {
           FOOTER
       ========================================== */}
       <Footer />
+
+      {/* ==========================================
+          WHATSAPP
+      ========================================== */}
+      <WhatsApp />
 
       {/* ==========================================
           LIGHTBOX
