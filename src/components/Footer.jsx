@@ -149,6 +149,10 @@ const Footer = () => {
           <p className="hidden uppercase tracking-[0.16em] md:block">
             Calidad · Seguridad · Procedimiento
           </p>
+
+          <p className="uppercase tracking-[0.16em]">
+            Sitio desarrollado por Leandro Calfin
+          </p>
         </div>
 
       </div>
