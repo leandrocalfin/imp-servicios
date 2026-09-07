@@ -1,16 +1,39 @@
-# React + Vite
+# IMP Servicios SRL — Sitio web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Sitio institucional de **IMP Servicios SRL**: soldadura, fabricación, montaje, piping, arenado y pintura para la industria del petróleo, gas y el sector naval-portuario.
 
-Currently, two official plugins are available:
+🌐 **Demo:** https://leandrocalfin.github.io/imp-servicios/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologías
 
-## React Compiler
+- React 19 + Vite 8
+- Tailwind CSS 4
+- React Router 7 (rutas: `/` y `/galeria/:categoria`)
+- Leaflet / React-Leaflet (mapa de bases operativas)
+- Framer Motion, Lucide, React Icons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Estructura
 
-## Expanding the Oxlint configuration
+- `src/pages/` — `Inicio`, `GaleriaCategoria`
+- `src/components/` — Navbar, Hero, Empresa, Servicios, Certificaciones, Galería, BasesOperativas, Contacto, Footer, WhatsApp
+- `public/galeria/` — fotos por categoría (piping, tanques, estructuras, arenado-pintura, naval)
+- `.github/workflows/deploy.yml` — deploy automático a GitHub Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Desarrollo
+
+```bash
+npm install
+npm run dev      # servidor local
+npm run build    # compilar a dist/
+npm run preview  # previsualizar el build
+npm run lint     # linter
+```
+
+## Deploy
+
+Cada push a `main` compila y publica automáticamente en GitHub Pages (Source: GitHub Actions).
+El sitio usa `base: "/imp-servicios/"` y `basename` del router, más un fallback `404.html` para que las rutas `/galeria/:categoria` funcionen al recargar.
+
+## Crédito
+
+Sitio desarrollado por **Leandro Calfin**.
