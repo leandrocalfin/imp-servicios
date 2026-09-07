@@ -83,36 +83,6 @@ const Footer = () => {
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-white">
               Contacto
             </p>
-
-            <div className="mt-5 flex flex-col gap-3 text-sm text-white/50">
-              <a
-                href="mailto:administracion@imp-servicios.com"
-                className="transition hover:text-white"
-              >
-                administracion@imp-servicios.com
-              </a>
-
-              <a
-                href="mailto:administracion3@imp-servicios.com"
-                className="transition hover:text-white"
-              >
-                administracion3@imp-servicios.com
-              </a>
-
-              <a
-                href="tel:+542993268347"
-                className="transition hover:text-white"
-              >
-                +54 299 326-8347
-              </a>
-
-              <a
-                href="tel:+542995225188"
-                className="transition hover:text-white"
-              >
-                +54 299 522-5188
-              </a>
-            </div>
           </div>
 
           {/* BASES */}
@@ -150,9 +120,14 @@ const Footer = () => {
             Calidad · Seguridad · Procedimiento
           </p>
 
-          <p className="uppercase tracking-[0.16em]">
+          <a
+            href="https://www.leandrocalfin.com.ar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="uppercase tracking-[0.16em] transition hover:text-white"
+          >
             Sitio desarrollado por Leandro Calfin
-          </p>
+          </a>
         </div>
 
       </div>
